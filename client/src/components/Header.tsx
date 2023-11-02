@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Menu from "./Menu";
-import { Router, useNavigate } from "react-router-dom";
 import { CurrentModal, useModal } from "../contexts/modalCtx";
 
 type Props = {

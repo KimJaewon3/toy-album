@@ -8,4 +8,6 @@ export default function Home() {
   );
 }
 
-const HomeContainer = styled.div``;
+const HomeContainer = styled.section`
+  border: 2px solid black;
+`;
