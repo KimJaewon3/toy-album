@@ -1,18 +1,20 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
-import Sign from "./pages/Sign";
-import Menu from "./components/Menu";
+import Header from "./components/Header";
+import { useModal } from "./contexts/modalCtx";
+import Modal from "./components/Modal";
 
 export default function App() {
-  const pathList = ["/", "/sign"];
+  const pathList = ["/"];
+  const { modalInfo } = useModal();
 
   return (
     <BrowserRouter>
-      <Menu pathList={pathList} />
+      {modalInfo.isOpen && <Modal />}
+      <Header pathList={pathList} />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/sign" element={<Sign />} />
       </Routes>
     </BrowserRouter>
   );

@@ -9,7 +9,7 @@ type InputValue = {
   gender: "male" | "female";
 };
 
-export default function Sign() {
+export default function SignUp() {
   const [inputValue, setInputValue] = useState<InputValue>({
     email: "",
     password: "",
@@ -31,7 +31,7 @@ export default function Sign() {
   }
 
   return (
-    <SignContainer>
+    <SignUpContainer>
       <legend>sign up</legend>
       <form onSubmit={(e) => handleFormSubmit(e)}>
         <Input handler={handleInput} name="email" type="email" value={inputValue.email} />
@@ -45,7 +45,7 @@ export default function Sign() {
         />
         <button>click</button>
       </form>
-    </SignContainer>
+    </SignUpContainer>
   );
 }
 
@@ -99,8 +99,9 @@ const Input = ({
   );
 };
 
-const SignContainer = styled.fieldset`
+const SignUpContainer = styled.fieldset`
   display: inline-block;
+  background-color: #d4d4ff;
   > form {
     display: flex;
     flex-direction: column;
