@@ -12,6 +12,7 @@ export default function Header({ pathList }: Props) {
       <div>logo</div>
       <Menu pathList={pathList} />
       <Sign />
+      <div>noti</div>
     </HeaderContainer>
   );
 }
@@ -31,4 +32,7 @@ const Sign = () => {
   );
 };
 
-const HeaderContainer = styled.header``;
+const HeaderContainer = styled.header`
+  display: flex;
+  background-color: #f3efef;
+`;
