@@ -24,4 +24,12 @@ export default function Menu({ pathList }: Props) {
   );
 }
 
-const MenuContainer = styled.nav``;
+const MenuContainer = styled.nav`
+  > ul {
+    list-style: none;
+    display: flex;
+    > li {
+      margin: 0 10px;
+    }
+  }
+`;
