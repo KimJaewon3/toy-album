@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer, ReactNode } from "react";
 
-export type CurrentModal = "signIn" | "signUp" | null;
+export type CurrentModal = "signIn" | "signUp" | "detailPhoto" | null;
 
 type ModalInfo = {
   currentModal: CurrentModal;

@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header";
-import { useModal } from "./contexts/modalCtx";
+import { useModal } from "./context/modalCtx";
 import Modal from "./components/Modal";
 import Gallery from "./pages/Gallery";
 import Album from "./pages/Album";

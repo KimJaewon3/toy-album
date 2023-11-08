@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { useModal } from "../contexts/modalCtx";
+import { useModal } from "../context/modalCtx";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import DetailPhoto from "./DetailPhoto";
 
 export default function Modal() {
   const { modalInfo, dispatch } = useModal();
@@ -16,6 +17,7 @@ export default function Modal() {
     <ModalContainer onClick={(e) => closeModal(e)}>
       {modalInfo.currentModal === "signIn" && <SignIn />}
       {modalInfo.currentModal === "signUp" && <SignUp />}
+      {modalInfo.currentModal === "detailPhoto" && <DetailPhoto />}
     </ModalContainer>
   );
 }
@@ -26,8 +28,9 @@ const ModalContainer = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.137);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 `;
