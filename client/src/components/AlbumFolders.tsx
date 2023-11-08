@@ -28,9 +28,10 @@ function albumIconGenerator(name: string): ReactNode {
 
 type Props = {
   toggleFolderMenu: () => void;
+  isFolderMenuOpen: boolean;
 };
 
-export default function AlbumFolders({ toggleFolderMenu }: Props) {
+export default function AlbumFolders({ toggleFolderMenu, isFolderMenuOpen }: Props) {
   const dummyAlbumList = [
     {
       id: 1,
@@ -70,7 +71,7 @@ export default function AlbumFolders({ toggleFolderMenu }: Props) {
   }
 
   return (
-    <AlbumFoldersContainer>
+    <AlbumFoldersContainer $isFolderMenuOpen={isFolderMenuOpen}>
       <ul className="album-menu">
         <AlbumLi name="Albums" onClick={toggleFolderMenu} icon={albumIconGenerator("albums")} />
         <AlbumLi name="All" onClick={() => filteringPhotos("all")} />
@@ -98,17 +99,23 @@ const AlbumLi = ({ name, onClick, icon }: LiProps) => {
   );
 };
 
-const AlbumFoldersContainer = styled.div`
-  min-height: 100vh;
+const AlbumFoldersContainer = styled.div<{ $isFolderMenuOpen: boolean }>`
+  height: 100%;
+  position: fixed;
   background: linear-gradient(to bottom right, #e2a763, #8b4414);
-  .album-menu > li {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 60px 1fr;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 2px solid white;
-  }
-  .album-menu > li:first-child {
+  width: ${({ $isFolderMenuOpen }) => ($isFolderMenuOpen ? "160px" : "60px")};
+  transition: 0.3s ease;
+  overflow: hidden;
+
+  .album-menu {
+    margin: 2px;
+    > li {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 60px 1fr;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 2px solid white;
+    }
   }
 `;

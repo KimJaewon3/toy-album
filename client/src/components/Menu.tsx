@@ -25,6 +25,7 @@ export default function Menu({ pathList }: Props) {
 }
 
 const MenuContainer = styled.nav`
+  height: 10vh;
   > ul {
     list-style: none;
     display: flex;

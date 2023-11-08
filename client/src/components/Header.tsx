@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Menu from "./Menu";
-import { CurrentModal, useModal } from "../contexts/modalCtx";
+import { CurrentModal, useModal } from "../context/modalCtx";
 
 type Props = {
   pathList: string[];
