@@ -1,25 +1,35 @@
 import styled from "styled-components";
 import AlbumFolders from "../components/AlbumFolders";
-import { albumState, dummyPhotos } from "../store/album";
+import { albumPhotos, albumState, dummyPhotos } from "../store/album";
 import { useEffect, useRef, useState } from "react";
 import type { Photo } from "../api/album";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useModal } from "../context/modalCtx";
 
 export default function Album() {
   const [isFolderMenuOpen, setIsFolderMenuOpen] = useState(false);
   const setAlbumstate = useSetRecoilState(albumState);
+  const photos = useRecoilValue(albumPhotos);
   const { dispatch } = useModal();
+
+  useEffect(() => {
+    setAlbumstate((prev) => {
+      return {
+        ...prev,
+        photos: dummyPhotos,
+      };
+    });
+  }, []);
 
   function toggleFolderMenu() {
     setIsFolderMenuOpen(!isFolderMenuOpen);
   }
 
-  function openDetailPhoto(photoInfo: Photo) {
+  function openDetailPhoto(id: number) {
     setAlbumstate((prev) => {
       return {
         ...prev,
-        currentPhoto: photoInfo,
+        currentPhotoId: id,
       };
     });
     dispatch({ type: "MODAL_OPEN", payload: "detailPhoto" });
@@ -29,8 +39,8 @@ export default function Album() {
     <AlbumContainer $isFolderMenuOpen={isFolderMenuOpen}>
       <AlbumFolders toggleFolderMenu={toggleFolderMenu} isFolderMenuOpen={isFolderMenuOpen} />
       <div className="photos-container">
-        {dummyPhotos.map((photo) => (
-          <div className="photo-wrap" key={photo.id} onClick={() => openDetailPhoto(photo)}>
+        {photos.map((photo) => (
+          <div className="photo-wrap" key={photo.id} onClick={() => openDetailPhoto(photo.id)}>
             <img src={photo.src} />
           </div>
         ))}

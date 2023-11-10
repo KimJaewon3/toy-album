@@ -33,6 +33,7 @@ export type Photo = {
   name: string;
   description: string;
   src: string;
+  date: string;
 };
 export const getPhotos = async (params: GetPhotosParams) => {
   return await serverInstance.get<Photo[]>("/photos", {
